@@ -118,24 +118,17 @@ void Game() {
 	player1.x = width / 2;
 	player1.y = height / 2;
 
-
-
-
 	Position G;
 	Position levelUp;
 	Position levelDown;
-	int iterations1 = 0;
-	int iterations2 = 0;
 	if (currentLevel != -5 && currentLevel != 5)
 	{
 		do
 		{
-			iterations1++;
 			levelUp = RandomPosition();
 		} while (levelUp.x == player1.x && levelUp.y == player1.y);
 		do
 		{
-			iterations2++;
 			levelDown = RandomPosition();
 		} while (levelDown.x == player1.x && levelDown.y == player1.y || levelDown.x == levelUp.x && levelDown.y == levelUp.y);
 
@@ -148,7 +141,6 @@ void Game() {
 		{
 			G = RandomPosition();
 			levelDown = RandomPosition();
-			iterations1++;
 		} while (G.x == player1.x && G.y == player1.y || levelDown.x == player1.x && levelDown.y == player1.y);
 		board[levelDown.x][levelDown.y] = Icons[3];
 		board[G.x][G.y] = Icons[4];
@@ -159,7 +151,6 @@ void Game() {
 		{
 			G = RandomPosition();
 			levelUp = RandomPosition();
-			iterations1++;
 		} while (G.x == player1.x && G.y == player1.y || levelUp.x == player1.x && levelUp.y == player1.y);
 		board[levelUp.x][levelUp.y] = Icons[3];
 		board[G.x][G.y] = Icons[4];
@@ -221,14 +212,12 @@ void task3() {
 		cout << persons[i].name << endl;
 		cout << persons[i].phonenumber << endl << endl;
 	}
-
-
 }
 
 
 int main()
 {
-	/*
+	
 	#pragma region Task1
 		string sentence;
 		cout << "enter a sentence:\n";
@@ -236,14 +225,14 @@ int main()
 		string _sentence = Task1(sentence);
 		cout << _sentence << endl;
 	#pragma endregion
-	*/
-	/*
+	
+	
 	#pragma region Task2
 		srand(time(NULL));
 		Game();
 	#pragma endregion
-	*/
-	//task3();
+	
+	task3();
 
 
 	return 0;
