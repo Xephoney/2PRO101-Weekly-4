@@ -127,7 +127,6 @@ Position Input(Position p, char b[width][height])
 }
 void Game();
 void Game() {
-
 	char board[width][height];
 	memset(board, '-', width * height);
 
@@ -170,11 +169,10 @@ void Game() {
 			G = RandomPosition();
 			levelUp = RandomPosition();
 		} while (G.x == player1.x && G.y == player1.y || levelUp.x == player1.x && levelUp.y == player1.y);
+		
 		board[levelUp.x][levelUp.y] = Icons[3];
 		board[G.x][G.y] = Icons[4];
 	}
-
-
 	//GameLoop
 	do {
 
@@ -182,13 +180,8 @@ void Game() {
 		map(board);
 
 		std::cout << "X : " << player1.x + 1 << " | Y : " << player1.y + 1 << std::endl;
-		//cout << "Current level: " << currentLevel << endl;
-
-
 		player1 = Input(player1, board);
 
-		//Checking for Ladders / Stairs
-		//Icons[3] = Down
 		if (board[player1.x][player1.y] == Icons[3])
 		{
 			currentLevel--;
@@ -201,13 +194,6 @@ void Game() {
 			Game();
 			break;
 		}
-
-		//Input
-
-		// '\\' = Go up
-		// '/' = Go down
-		// 'G'
-
 	} while (board[player1.x][player1.y] != Icons[4]);
 
 	map(board);
@@ -237,14 +223,12 @@ void DisplayEmployeeInfo()
 			std::cout << "| " << i + 1 << " | " << persons.at(i).name << "\t | " << persons.at(i).phonenumber << " |\n";
 		}
 		std::cout << std::endl;
-		
 	}
 	else
 	{
 		std::cout << "You have no employees working for you at the moment! \nAfter you have added some employees they will end up here \n\n";
 		system("pause");
 	}
-	
 }
 
 void AddEmployee();
@@ -272,7 +256,6 @@ void AddEmployee()
 	std::cout << "Great! " << name << " is now our employee! \n";
 	system("pause");
 }
-
 void FireEmployee();
 void FireEmployee()
 {
@@ -281,7 +264,6 @@ void FireEmployee()
 	std::cout << "To remove an employee just refeer to their ID";
 	std::cout << "Which of the employees above do you want to fire?\n";
 	std::cout << "\t ID : ";
-
 
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
@@ -355,9 +337,7 @@ void Task3()
 	} while (true);
 }
 #pragma endregion
-
 #pragma region Task 4 Functions and Variables
-
 struct Dice
 {
 	int face;
@@ -401,10 +381,7 @@ void Display(Dice *ptr, int size)
 		}
 	}
 	std::cout << "|\n\n";
-
-	
 }
-
 void CalculateSameDice(Dice *arr, int size);
 void CalculateSameDice(Dice *arr, int size)
 {
@@ -418,13 +395,9 @@ void CalculateSameDice(Dice *arr, int size)
 	}
 	std::cout << "Total number of 6's : " << _count << std::endl << std::endl;
 }
-
 void CalculatePairs(Dice *arr, int size);
 void CalculatePairs(Dice *arr, int size)
 {
-	//First i need to sort the array. 
-	//Then i go through and check if one element has more than one of it.
-
 	int faceCopy[5];
 	for (int i = 0; i < size; i++)
 	{
@@ -445,7 +418,6 @@ void CalculatePairs(Dice *arr, int size)
 			}
 		}
 	}
-
 }
 
 void Task4();
@@ -453,13 +425,11 @@ void Task4()
 {
 	Dice AllDice[5];
 	int AllDiceSize = _countof(AllDice);
-
 	//This loop is only played once to scramble the dice.
 	for (int i = 0; i < AllDiceSize; i++)
 	{
 		AllDice[i].Roll();
 	}
-	//Displays all dice
 	do
 	{
 		Display(AllDice, AllDiceSize);
@@ -507,13 +477,9 @@ void Task4()
 			break;
 		}
 		//The reason i use sleep inside at 50 ms is to stop it from looping to fast to then register double. 
-
 	} while (true);
-	
 }
 #pragma endregion
-
-
 int main()
 {
 	srand(time(NULL));
@@ -531,7 +497,6 @@ int main()
 		std::cout << "Select one of the tasks above : ";
 		
 		std::cin >> Choice;
-
 		switch (Choice)
 		{
 		case 1:
